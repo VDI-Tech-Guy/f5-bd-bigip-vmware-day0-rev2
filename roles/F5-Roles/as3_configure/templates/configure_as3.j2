@@ -21,7 +21,7 @@
 					"profileHTTP": "basic", 
 					"pool": "{{ tenant_info_var.name }}_pool",
           			"redirect80": true,
-					"serverTLS": "DSC-Wildcard",
+					"serverTLS": "{{certificate_name}}",
           			"persistenceMethods": []
 				},
 				"{{ tenant_info_var.name }}_pool": {
@@ -42,17 +42,17 @@
 							]}{{ ", " if not loop.last else ""}}
 						{% endfor %}]
 				},
-				"DSC-Wildcard": {
+				"{{certificate_name}}": {
 					"class": "TLS_Server",
 					"certificates": [{
-						"certificate": "DSC-Wildcard_crt"
+						"certificate": "{{certificate_name}}_crt"
 					}]
 				},
-				"DSC-Wildcard_crt": {
+				"{{certificate_name}}_crt": {
 					"class": "Certificate",
 					"remark": "in practice we recommend using a passphrase",
-          			"certificate": "{{ lookup('file', '/awx/cert/dsc-wildcard-crt.crt') | replace('\n', '\\n') }}",
-          			"privateKey": "{{ lookup('file', '/awx/cert/dsc-wildcard-rsa.key') | replace('\n', '\\n') }}"
+          			"certificate": "{{ lookup('file', '{{certificate_crt}}') | replace('\n', '\\n') }}",
+          			"privateKey": "{{ lookup('file', '{{certificate_key}}') | replace('\n', '\\n') }}"
 				}
 			}
 		}
