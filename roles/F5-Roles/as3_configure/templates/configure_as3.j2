@@ -21,9 +21,7 @@
 					"profileHTTP": "basic", 
 					"pool": "{{ tenant_info_var.name }}_pool",
           			"redirect80": true,
-					"serverTLS": {
-              			"certificate": "DSC-Wildcard"
-          			},
+					"serverTLS": "DSC-Wildcard",
           			"persistenceMethods": []
 				},
 				"{{ tenant_info_var.name }}_pool": {
