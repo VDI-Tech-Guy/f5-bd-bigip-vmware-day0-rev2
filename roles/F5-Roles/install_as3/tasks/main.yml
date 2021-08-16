@@ -2,11 +2,9 @@
 # tasks install Declaritive Onboarding Latest
   
  - name: Get latest AS3 RPM name
-#   ansible.builtin.shell: wget -O - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 7 | cut -d "=" -f 1 |  cut -d "\"" -f 1 #Changed rpm to noarch.rpm b/c of 3.26.1 issue
    ansible.builtin.shell: curl -s -D - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 7 | cut -d "=" -f 1 |  cut -d "\"" -f 1
    register: as3_output
    run_once: true
-   delegate_to: localhost
 
  - debug:
      var: as3_output
@@ -14,19 +12,15 @@
  - ansible.builtin.set_fact:
     as3_release: "{{as3_output.stdout_lines[0]}}"
    run_once: true
-   delegate_to: localhost
 
  - name: Get latest AS3 RPM version
-#   ansible.builtin.shell: wget -O - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6  #Changed rpm to noarch.rpm b/c of 3.26.1 issue
-   ansible.builtin.shell: curl -s -D - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 | cut -c 2-
+   ansible.builtin.shell: curl -s -D - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 
    register: as3_output
    run_once: true
-   delegate_to: localhost
 
  - ansible.builtin.set_fact:
     as3_release_tag: "{{as3_output.stdout_lines[0]}}"
    run_once: true
-   delegate_to: localhost
 
  - name: Grab AS3 RPM from github
    ansible.builtin.get_url:
@@ -37,18 +31,15 @@
    register: file_get
    retries: 10
    until: file_get is not failed
-   delegate_to: localhost
 
  - name: Grab the AS3 version from the home directory
    ansible.builtin.shell: ls -Art ~/f5-appsvcs-*.rpm | tail -n 1 | rev | cut -d/ -f 1 | rev
    register: ls_output
    run_once: true
-   delegate_to: localhost
 
  - ansible.builtin.set_fact:
     as3_rpm: "{{ls_output.stdout}}"
    run_once: true
-   delegate_to: localhost
 
  - name: Install AS3
    f5networks.f5_modules.bigip_lx_package:
