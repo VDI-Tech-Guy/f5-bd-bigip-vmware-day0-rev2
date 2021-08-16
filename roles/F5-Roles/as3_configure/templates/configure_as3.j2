@@ -53,8 +53,8 @@
 				"DSC-Wildcard_crt": {
 					"class": "Certificate",
 					"remark": "in practice we recommend using a passphrase",
-          			"certificate": "{{ lookup('file', '/awx/cert/dsc-wildcard-crt.pem') | replace('\n', '\\n') }}",
-          			"privateKey": "{{ lookup('file', '/awx/cert/dsc-wildcard-key.pem') | replace('\n', '\\n') }}"
+          			"certificate": "{{ lookup('file', '/awx/cert/dsc-wildcard-crt.crt') | replace('\n', '\\n') }}",
+          			"privateKey": "{{ lookup('file', '/awx/cert/dsc-wildcard-rsa.key') | replace('\n', '\\n') }}"
 				}
 			}
 		}
