@@ -22,7 +22,7 @@
 					"pool": "{{ tenant_info_var.name }}_pool",
           			"redirect80": true,
 					"serverTLS": {
-              			"bigip": "/Common/clientssl"
+              			"bigip": "/common/DSC-Wildcard"
           			},
           			"persistenceMethods": []
 				},
@@ -43,6 +43,18 @@
 								{% endfor %}
 							]}{{ ", " if not loop.last else ""}}
 						{% endfor %}]
+				},
+				"DSC-Wildcard": {
+					"class": "TLS_Server",
+					"certificates": [{
+						"certificate": "DSC-Wildcard_crt"
+					}]
+				},
+				"DSC-Wildcard_crt": {
+					"class": "Certificate",
+					"remark": "in practice we recommend using a passphrase",
+          			"certificate": "{{ lookup('file', '/awx/cert/dsc-wildcard-crt.pem') | replace('\n', '\\n') }}",
+          			"privateKey": "{{ lookup('file', '/awx/cert/dsc-wildcard-key.pem') | replace('\n', '\\n') }}"
 				}
 			}
 		}
