@@ -43,8 +43,8 @@ f5_ova_builds:
 #- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-12.1.5.3-0.0.5.LTM-scsi.ova", option: "quadcpu"}
 #- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-14.1.3-0.0.7.ALL-vmware.ova", option: "quadcpu"}
 #- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-15.1.2-0.0.9.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-15.1.2", mgmt_ip_block: "195.195.195.30", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
-#- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/16.x/16.1.x/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
-- {location: "/mnt/file/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
+- {location: "/mnt/appsTest/isos/VMware/Appliances/F5 Networks/16.x/16.1.x/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
+#- {location: "/mnt/file/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
 
 #AS3/DO
 #URIs
