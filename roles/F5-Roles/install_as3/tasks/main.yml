@@ -3,7 +3,7 @@
   
  - name: Get latest AS3 RPM name
 #   ansible.builtin.shell: wget -O - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 7 | cut -d "=" -f 1 |  cut -d "\"" -f 1 #Changed rpm to noarch.rpm b/c of 3.26.1 issue
-   ansible.builtin.shell: curl -s -D - "https://github.com/F5Networks/f5-appsvcs-extension/releases" | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 | cut -c 2-
+   ansible.builtin.shell: curl -s -D - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 7 | cut -d "=" -f 1 |  cut -d "\"" -f 1
    register: as3_output
    run_once: true
    delegate_to: localhost
@@ -17,7 +17,8 @@
    delegate_to: localhost
 
  - name: Get latest AS3 RPM version
-   ansible.builtin.shell: wget -O - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6  #Changed rpm to noarch.rpm b/c of 3.26.1 issue
+#   ansible.builtin.shell: wget -O - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6  #Changed rpm to noarch.rpm b/c of 3.26.1 issue
+   ansible.builtin.shell: curl -s -D - {{as3_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 | cut -c 2-
    register: as3_output
    run_once: true
    delegate_to: localhost
