@@ -11,7 +11,7 @@
    run_once: true
 
  - name: Get latest DO RPM version
-   ansible.builtin.shell: curl -s -D - {{do_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 | cut -c 2-
+   ansible.builtin.shell: curl -s -D - {{do_uri}} | grep -E noarch.rpm | head -1 | cut -d "/" -f 6 
    register: do_output
    run_once: true
 
