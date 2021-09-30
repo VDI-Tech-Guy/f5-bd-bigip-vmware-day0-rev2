@@ -1,12 +1,12 @@
 ---
-
+#This Code was meant for any 16.0 builds and lower as they need a Guest Customization Fix to work correctly.
 #Deploy OVA
 - hosts: localhost
   connection: local
   gather_facts: true
   vars_files:
-    - ../vars/Vault/vault.yml
-    - ../vars/HZN-Lab/deployment.yml
+    - /awx/vault/vault.yml
+    - /awx/vault/deployment.yml
   roles:
     - roles/F5-Roles/date_time
     - roles/vSphere-Roles/create_resource_pool
@@ -18,8 +18,8 @@
   gather_facts: false
   become: yes
   vars_files:
-    - ../vars/Vault/vault.yml
-    - ../vars/HZN-Lab/deployment.yml
+    - /awx/vault/vault.yml
+    - /awx/vault/deployment.yml
   roles:
    - roles/F5-Roles/wait_for_bigip_startup
    - roles/F5-Roles/reset_passwords
@@ -30,8 +30,8 @@
   connection: local
   gather_facts: true
   vars_files:
-    - ../vars/Vault/vault.yml
-    - ../vars/HZN-Lab/deployment.yml
+    - /awx/vault/vault.yml
+    - /awx/vault/deployment.yml
   roles:
     - roles/vSphere-Roles/prep_f5_linked_clone
     - roles/vSphere-Roles/clone_f5_vm
@@ -42,8 +42,8 @@
   connection: local
   gather_facts: false
   vars_files:
-    - ../vars/Vault/vault.yml
-    - ../vars/HZN-Lab/deployment.yml
+    - /awx/vault/vault.yml
+    - /awx/vault/deployment.yml
   roles:
     - roles/F5-Roles/wait_for_bigip_startup
     - roles/F5-Roles/install_as3
@@ -57,7 +57,7 @@
   connection: local
   gather_facts: true
   vars_files:
-    - ../vars/Vault/vault.yml
-    - ../vars/HZN-Lab/deployment.yml
+    - /awx/vault/vault.yml
+    - /awx/vault/deployment.yml
   roles:
     - roles/F5-Roles/date_time

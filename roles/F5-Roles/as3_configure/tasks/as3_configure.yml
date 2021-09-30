@@ -10,11 +10,8 @@
      commands: show sys failover
      provider: "{{ provider }}"
    register: f5_info
-   
-#  - debug:
-#      var: f5_info.stdout[0].split()[1]
 
- - name: Configure F5 with AS3
+ - name: Configure F5 with AS3 on Active Node
    ansible.builtin.uri:
      url: "https://{{ ansible_host }}:{{f5_admin_port}}/mgmt/shared/appsvcs/declare"
      method: POST

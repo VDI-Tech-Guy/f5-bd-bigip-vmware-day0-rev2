@@ -1,13 +1,5 @@
 ---
 
-#  - set_fact:
-#      num_of_machines: "{{ item.build_count }}"
-#    with_items: "{{ f5_ova_builds }}"
-#    when: item.tmpl_name in inventory_hostname
-
-#  - debug:
-#      var: num_of_machines
-
  - name: Wait for BIG-IP to be ready
    f5networks.f5_modules.bigip_wait:
      delay: 5

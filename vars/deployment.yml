@@ -1,20 +1,21 @@
 #Deployment information 
 
 #F5 Info
+# Select Modules deployed in Declaritive Onboarding Instance
 f5_modules:
   - APM
   - LTM
 dns_name_servers:
-- 192.168.192.14
-- 192.168.30.15
+- 192.192.192.192
+- 192.192.192.193
 dns_name_search:
 - localdomain
-- dsc-services.local
+- mydomain.local
 ntp_servers:
 - 0.pool.ntp.org
 - 1.pool.ntp.org
 - 2.pool.ntp.org
-domain_fqdn: "dsc-services.local"
+domain_fqdn: "mydomain.local"
 
 #Self IPs
 self_internal_sn: "199.199.199.0/24"
@@ -30,9 +31,9 @@ External_Network: "F5-DMZ-Network"
 HA_Network: "F5-HA-Network"
 
 #VM Creation
-vm_count: 3
 vm_hostname: "Lab-BIP-"
 resource_pool_name: "Lab-BIP"
+  # is_linked_clone when true (more for demo) when false (more for production)
 is_linked_clone: yes
 waiting_period: 2
 f5_snapshot_name: "Snap"
@@ -40,10 +41,7 @@ f5_snapshot_desc: "Linked Clone Snap"
 
 #OVAs
 f5_ova_builds:
-#- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-12.1.5.3-0.0.5.LTM-scsi.ova", option: "quadcpu"}
-#- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-14.1.3-0.0.7.ALL-vmware.ova", option: "quadcpu"}
-#- {location: "/mnt/apps/isos/VMware/Appliances/F5 Networks/BIGIP-15.1.2-0.0.9.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-15.1.2", mgmt_ip_block: "195.195.195.30", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
-#- {location: "/awx/cifs/isos/VMware/Appliances/F5 Networks/16.x/16.1.x/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
+#- {location: "/awx/file/BIGIP-14.1.3-0.0.7.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-14.1.3", mgmt_ip_block: "195.195.195.40", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
 - {location: "/awx/file/BIGIP-16.1.0-0.0.19.ALL-vmware.ova", option: "quadcpu", build_count: 2, tmpl_name: "BIGIP-16.1.0", mgmt_ip_block: "195.195.195.20", mgmt_ip_subnet_prefix: "24", mgmt_gw: "195.195.195.1"}
 
 #AS3/DO

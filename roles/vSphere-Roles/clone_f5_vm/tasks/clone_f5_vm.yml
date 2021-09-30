@@ -15,11 +15,6 @@
       datastore: "{{ datastore }}"
       linked_clone: "{{ is_linked_clone }}"
       snapshot_src: "{{ f5_snapshot_name }}"
-#      networks:
-#      - name: "{{ Management_Network }}"
-#      - name: "{{ Internal_Network }}"
-#      - name: "{{ External_Network }}"
-#      - name: "{{ HA_Network }}"
       state: poweredoff
       wait_for_ip_address: no
     delegate_to: localhost

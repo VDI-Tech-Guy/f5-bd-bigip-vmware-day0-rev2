@@ -1,5 +1,4 @@
 ---
-# tasks file for Create-VM
 
  - name: Create F5 Vars Dyanmic Group
    include: create_dyn_group_f5_vms.yml

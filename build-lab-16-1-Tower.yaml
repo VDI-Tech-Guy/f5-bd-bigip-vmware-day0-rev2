@@ -1,5 +1,5 @@
 ---
-
+#This Code is for 16.1 and above as the build contains a fix for guest customization to work correctly.
 #Deploy OVA
 - hosts: localhost
   connection: local

@@ -32,14 +32,6 @@
   delegate_to: localhost
   register: as3_result
 
-# - debug:
-#     var: do_result
-#   ignore_errors: true
-  
-# - debug:
-#     var: as3_result
-#   ignore_errors: true
-
 - name: Restart BIG-IP Services if not responding to AS3 or DO
   f5networks.f5_modules.bigip_command:
     commands:

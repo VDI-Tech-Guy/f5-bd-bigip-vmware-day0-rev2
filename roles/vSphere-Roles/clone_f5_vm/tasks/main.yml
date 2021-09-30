@@ -1,5 +1,4 @@
 ---
-# tasks file for Create-VM
 
  - name: Provision VM from Template 
    include: clone_f5_vm.yml

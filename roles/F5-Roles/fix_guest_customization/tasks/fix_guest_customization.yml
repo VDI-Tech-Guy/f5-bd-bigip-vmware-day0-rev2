@@ -36,7 +36,3 @@
     with_items:
       - rm -f /config/ssh/ssh_host_* 
       - rm -f /shared/ssh/ssh_host_*
-      #- rm -f /config/bigip.license
-      #- rm -f /config/f5-rest-device-id
-
-

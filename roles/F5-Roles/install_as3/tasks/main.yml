@@ -6,9 +6,6 @@
    register: as3_output
    run_once: true
 
-#  - debug:
-#      var: as3_output
-
  - ansible.builtin.set_fact:
     as3_release: "{{as3_output.stdout_lines[0]}}"
    run_once: true

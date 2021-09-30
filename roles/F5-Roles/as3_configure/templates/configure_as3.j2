@@ -8,7 +8,7 @@
 		"id": "{{tenant_info_var.name}}",
 		"label": "Configure Web-Apps via AS3",
 		"remark": "HTTPS with Pool",
-		"Customer-Tenant": {
+		"{{ tenant_info_var.tenant_name }}": {
 			"class": "Tenant",
 			"WebApp-VIP": {
 				"class": "Application",
@@ -21,7 +21,9 @@
 					"profileHTTP": "basic", 
 					"pool": "{{ tenant_info_var.name }}_pool",
           			"redirect80": true,
-					"serverTLS": "{{certificate_name}}",
+					"serverTLS": {
+              			"bigip": "/Common/clientssl"
+          			},
           			"persistenceMethods": []
 				},
 				"{{ tenant_info_var.name }}_pool": {
@@ -41,18 +43,6 @@
 								{% endfor %}
 							]}{{ ", " if not loop.last else ""}}
 						{% endfor %}]
-				},
-				"{{certificate_name}}": {
-					"class": "TLS_Server",
-					"certificates": [{
-						"certificate": "{{certificate_name}}_crt"
-					}]
-				},
-				"{{certificate_name}}_crt": {
-					"class": "Certificate",
-					"remark": "in practice we recommend using a passphrase",
-          			"certificate": "{{ lookup('file', '{{certificate_crt}}') | replace('\n', '\\n') }}",
-          			"privateKey": "{{ lookup('file', '{{certificate_key}}') | replace('\n', '\\n') }}"
 				}
 			}
 		}

@@ -1,8 +1,4 @@
 ---
-# tasks install Declaritive Onboarding Latest
-
-#  - debug:
-#      var: ansible_host
 
  - name: Wait for BIG-IP start-up to be ready
    uri:
